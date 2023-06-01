@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <div class="card col-md-12" style="background-color: rgba(138, 20, 20, 0.116);">
+        <div class="card-header" style="text-align: center;">
+            <li style="list-style: none;"><h4>SELECTED FOODS</h4></li>
+        </div>
+        <div class="card-body">
+            <table class="table" *ngIf="commandLines">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Unit Price</th>
+                        <th>Cook Time</th>
+                        <th>Origins</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let commandLinesFood of commandLines">
+                        <td> {{ commandLinesFood.food.name }} </td>
+                        <td> {{commandLinesFood.food.price}} </td>
+                        <td> {{ commandLinesFood.food.cookTime }} </td>
+                        <td> {{ commandLinesFood.food.origins }} </td>
+                        <td> {{ commandLinesFood.quantity }} </td>
+                        <td>
+                          <button class="btn btn-outline-danger" (click)="handleDeleteFood(commandLinesFood)">
+                            Delete
+                          </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-baseline">
+            <span class="card-text"> <h4>Total of product: {{ selectedFoods.length }}</h4> </span>
+            <span class="card-text"> <h4>Total Price: {{totalPrice}} FCFA</h4> </span>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-info mb-5" [routerLink]="['/client', 'food']">
+        <span class="material-icons"> keyboard_arrow_left </span>
+        Retour
+      </button>
+      <button class="btn btn-outline-success mb-5" [routerLink]="['/client', 'command']" style="margin-right: 0;">
+        Command Now
+      </button>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<ng-template #errors>
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <h3>WARNING</h3>
+        </div>
+        <div class="card-body">
+            <div class="text-white">
+                <h4>{{ errorMessage }}</h4>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<div class="card mt-5" *ngIf="commandLines ; else errors">
+    <div class="card-header">
+        <h5>COMPLETE YOUR COMMAND</h5>
+    </div>
+    <div class="card-body col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <div class="card" *ngIf="commandLines">
+                        <div class="card-header">
+                            <h6>Your Command List</h6>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Quatity</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let f of commandLines">
+                                        <td> {{ f.food.name }} </td>
+                                        <td> {{ f.quantity}} </td>
+                                        <td> {{ f.totalPrice }} FCFA</td>
+                                    </tr>
+                                    <br>
+                                    <tr *ngIf="commandLines">
+                                        <td><h5>Total Price</h5></td>
+                                        <td><h5>{{totalPrice}} FCFA</h5></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h6>Please complete this form !</h6>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="commandFormGroup" (ngSubmit)="handleCommandClicked()">
+                                <div class="mb-3">
+                                    <label for="firstname" class="form-label">F. Name</label>
+                                    <input class="form-control" formControlName="firstname" type="text" id="firstname">
+                                    <small *ngIf="commandFormGroup.controls['firstname'].errors && commandFormGroup.controls['firstname'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('F. Name', commandFormGroup.controls['firstname'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastname" class="form-label">L. Name</label>
+                                    <input class="form-control" formControlName="lastname" type="text" id="lastname">
+                                    <small *ngIf="commandFormGroup.controls['lastname'].errors && commandFormGroup.controls['lastname'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('L. Name', commandFormGroup.controls['lastname'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="age" class="form-label">Bith date</label>
+                                    <input class="form-control" formControlName="bithdate" type="date" min="1900-01-01" max="2005-12-31" id="age">
+                                    <small *ngIf="commandFormGroup.controls['bithdate'].errors && commandFormGroup.controls['bithdate'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('Bith date', commandFormGroup.controls['bithdate'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input class="form-control" formControlName="email" type="email" id="email">
+                                    <small *ngIf="commandFormGroup.controls['email'].errors && commandFormGroup.controls['email'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('Email', commandFormGroup.controls['email'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="country" class="form-label">Country</label>
+                                    <input class="form-control" formControlName="country" type="text" id="country" required>
+                                    <small *ngIf="commandFormGroup.controls['country'].errors && commandFormGroup.controls['country'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('Country', commandFormGroup.controls['country'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="region" class="form-label">Region</label>
+                                    <input class="form-control" formControlName="region" type="text" id="region" required>
+                                    <small *ngIf="commandFormGroup.controls['region'].errors && commandFormGroup.controls['region'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('Region', commandFormGroup.controls['region'].errors) }}
+                                    </small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input class="form-control" formControlName="address" type="text" id="address">
+                                    <small *ngIf="commandFormGroup.controls['address'].errors && commandFormGroup.controls['address'].touched" class="text-danger">
+                                        {{ myValService.getValidatorErrorMessage('Adresse', commandFormGroup.controls['address'].errors) }}
+                                    </small>
+                                </div>
+                                <button [disabled]="!this.commandFormGroup.valid" type="submit" class="btn btn-info float-end">
+                                    <strong>COMMAND</strong>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

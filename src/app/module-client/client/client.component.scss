@@ -1,0 +1,11 @@
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Optionnel : pour contrôler la superposition du composant par rapport au contenu */
+}
+
+.container{
+  padding: 20vh 0;
+}

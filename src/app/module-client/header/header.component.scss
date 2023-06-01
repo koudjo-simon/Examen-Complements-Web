@@ -1,0 +1,49 @@
+header{
+    background-color: white;
+    border-bottom: 1px solid #c72929;
+    padding: 0;
+}
+
+.container-fluid{
+    display: flex;
+    justify-content: space-between;
+    /*background-color: #c72929;*/
+    color: white;
+}
+
+button{
+    color: white;
+}
+
+button:hover{
+    background-color: aliceblue;
+    color: #c72929;
+}
+
+span{
+    color: black;
+}
+
+a{
+    color: white;
+}
+
+/* a:hover{
+    background-color: #c72929;
+    color: white;
+} */
+
+a.logo{
+    font-weight: bold;
+    padding: 1em;
+}
+
+nav ul{
+    list-style-type: none;
+    margin: 0;
+}
+
+nav ul li a{
+    padding: 1em;
+    display: inline-block;
+}

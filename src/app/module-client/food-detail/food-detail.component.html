@@ -1,0 +1,53 @@
+<div class="card mt-5" *ngIf="food">
+    <div class="card-header text-white bg-info">
+        {{ food.name | uppercase }}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">Name</div>
+                    <div class="col-md-8"> {{ food.name }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Price</div>
+                    <div class="col-md-8"> {{ food.price }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Favorite</div>
+                    <div class="col-md-8"> {{ food.favorite }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Star</div>
+                    <div class="col-md-8"> {{ food.star }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Tags</div>
+                    <div class="col-md-8"> {{ food.tags }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Cook Time</div>
+                    <div class="col-md-8"> {{ food.cookTime }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Origins</div>
+                    <div class="col-md-8"> {{ food.origins }} </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img
+                    [src]="food.imageUrl"
+                    [title]="food.name"
+                    [alt]="food.name"
+                    class="card-img-top"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-outline-info d-flex" (click)="returnToTheFoodList()">
+            <span class="material-icons"> keyboard_arrow_left </span>
+            Retour à la liste
+        </button>
+    </div>
+</div>
